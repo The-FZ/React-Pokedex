@@ -1,8 +1,12 @@
 var React = require('react');
+var Navbar  = require('Navbar');
 
-var Main=(props)=>{
+
+var Main=({obj})=>{
   return (
-      <h1>Hello in the main component of React </h1>
+    <div>
+      <Navbar/>
+    </div>
   );
 };
 

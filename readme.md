@@ -1,1 +1,1 @@
-React Timer application.
+React Pokedex application

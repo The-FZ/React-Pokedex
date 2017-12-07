@@ -1105,7 +1105,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(39);
+var	fixUrls = __webpack_require__(40);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -1465,9 +1465,9 @@ var ReactDOM = __webpack_require__(27);
 var Main = __webpack_require__(36);
 
 //custom scss
-__webpack_require__(37);
+__webpack_require__(38);
 //load foundation
-__webpack_require__(40);
+__webpack_require__(41);
 $(document).foundation();
 
 ReactDOM.render(React.createElement(Main, null), document.getElementById('app'));
@@ -18786,12 +18786,15 @@ module.exports = camelize;
 
 
 var React = __webpack_require__(2);
+var Navbar = __webpack_require__(37);
 
-var Main = function Main(props) {
+var Main = function Main(_ref) {
+  var obj = _ref.obj;
+
   return React.createElement(
-    'h1',
+    'div',
     null,
-    'Hello React '
+    React.createElement(Navbar, null)
   );
 };
 
@@ -18801,10 +18804,29 @@ module.exports = Main;
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+var React = __webpack_require__(2);
+
+var Navbar = function Navbar() {
+  return React.createElement(
+    'div',
+    { className: 'navbar' },
+    'React Pokedex'
+  );
+};
+
+module.exports = Navbar;
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(38);
+var content = __webpack_require__(39);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -18829,7 +18851,7 @@ if(false) {
 }
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -18837,13 +18859,13 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".navbar {\n  background-color: #333333;\n  color: #ffffff;\n  font-family: monospace;\n  font-size: 1.8rem;\n  text-align: center;\n  padding: 5px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports) {
 
 
@@ -18938,13 +18960,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(41);
+var content = __webpack_require__(42);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -18969,7 +18991,7 @@ if(false) {
 }
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
