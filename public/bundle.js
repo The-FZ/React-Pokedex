@@ -21771,6 +21771,11 @@ var LoadingData = function LoadingData(_ref) {
       null,
       'Take a chill pill. The data is being loaded.'
     ),
+    React.createElement(
+      'p',
+      null,
+      'If the timer does not start, please refresh !!! '
+    ),
     React.createElement(Timer, { time: time })
   );
 };
