@@ -1,0 +1,20 @@
+.filter{
+  width: 450px;
+  margin: 0 auto;
+  margin-top: 2rem;
+
+  .filter-heading{
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0 0 10px 0;
+    color: #4d4d4d;
+    font-family: calibri;
+  }
+
+  select{
+    font-family: calibri;
+  }
+  option{
+    padding: 5px;
+  }
+}

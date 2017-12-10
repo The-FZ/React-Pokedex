@@ -25,6 +25,8 @@ module.exports = {
       PokemonList:path.resolve(__dirname,'./app/components/PokemonList.js'),
       PokemonListItem:path.resolve(__dirname,'./app/components/PokemonListItem.js'),
       Navbar:path.resolve(__dirname,'./app/components/Navbar.js'),
+      Filter:path.resolve(__dirname,'./app/components/Filter.js'),
+      Options:path.resolve(__dirname,'./app/components/Options.js'),
       LoadingData:path.resolve(__dirname,'./app/components/LoadingData.js'),
       Name:path.resolve(__dirname,'./app/components/Name.js'),
       Avatar:path.resolve(__dirname,'./app/components/Avatar.js'),

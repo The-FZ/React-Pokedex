@@ -5,6 +5,7 @@ var PokemonAPI = require('PokemonAPI');
 var axios = require('axios');
 var Navbar=require('Navbar');
 var LoadingData = require('LoadingData');
+var Filter = require('Filter');
 
 
 var PokemonMain = createReactClass({
@@ -81,10 +82,39 @@ var PokemonMain = createReactClass({
     });
   },
 
+  handleChange:function(url){
+    var url = url;
+    console.log(url);
+    var that = this;
+    axios.get(url).
+    then(function(response){
+      var responseData = response.data.pokemon;
+      var pokemonTypeURLs = [];
+      responseData.forEach(pokemon=>{
+        pokemonTypeURLs.push(pokemon.pokemon.url);
+      });
+
+      that.setState({
+        pokemonURLs:[],
+        pokemons:[],
+      });
+
+      pokemonTypeURLs.forEach(url=>{
+        axios.get(url).
+        then(function(response){
+            that.setState(prevState=>({
+            pokemons:[...prevState.pokemons,response.data],
+          }));
+        });
+      });
+
+    });
+  },
+
   render:function(){
 
     var renderPokemonList=()=>{
-      if(this.state.pokemons.length===20){
+      if(this.state.pokemons.length>=20){
         return <PokemonList pokemonList={this.state.pokemons}
         onHandleClickNext={this.onHandleClickNext}
         onHandleClickPrevious={this.onHandleClickPrevious}/>;
@@ -97,6 +127,7 @@ var PokemonMain = createReactClass({
     return (
       <div className='pokemon-main'>
         <Navbar/>
+        <Filter handleChange={this.handleChange}/>
         {renderPokemonList()}
       </div>
     );
