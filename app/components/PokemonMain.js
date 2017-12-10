@@ -9,22 +9,54 @@ var Navbar=require('Navbar');
 var PokemonMain = createReactClass({
   getInitialState:function(){
     return {
-    baseURL:"https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0",
+    baseURL:"https://pokeapi.co/api/v2/pokemon/?limit=20",
     previous:null,
     next:null,
     pokemonURLs:[],
-    pokemons:[]
+    pokemons:[],
     }
   },
+
   componentDidMount:function(){
+    this.updatePokemonState(this.state.baseURL);
+  },
+
+  onHandleClickNext:function(){
+    this.setState({
+      pokemons:[],
+      pokemonURLs:[],
+    });
+
+    if(this.state.next!==null){
+      this.updatePokemonState(this.state.next);
+    }
+    else{
+      this.updatePokemonState(this.state.baseURL);
+    }
+  },
+
+  onHandleClickPrevious:function(){
+    this.setState({
+      pokemons:[],
+      pokemonURLs:[],
+    });
+
+    if(this.state.previous!==null){
+      this.updatePokemonState(this.state.previous);
+    }
+    else{
+      this.updatePokemonState(this.state.baseURL);
+    }
+  },
+
+  updatePokemonState:function(url){
     var that = this;
-    axios.get(this.state.baseURL).
+    axios.get(url).
     then(function(response){
 
       var next = response.data.next;
       var previous = response.data.previous;
       var responseData  = response.data.results;
-
       var pokemonAllurls = [];
       responseData.forEach(pokemon=>{
         pokemonAllurls.push(pokemon.url);
@@ -34,7 +66,7 @@ var PokemonMain = createReactClass({
         axios.get(url).
         then(function(response){
           that.setState(prevState=>({
-            pokemons:[...prevState.pokemons,response.data]
+            pokemons:[...prevState.pokemons,response.data],
           }));
         });
       });
@@ -44,6 +76,7 @@ var PokemonMain = createReactClass({
         previous:previous,
         pokemonURLs:pokemonAllurls,
       });
+
     });
   },
 
@@ -51,7 +84,9 @@ var PokemonMain = createReactClass({
     return (
       <div className='pokemon-main'>
         <Navbar/>
-        <PokemonList pokemonList={this.state.pokemons}/>
+        <PokemonList pokemonList={this.state.pokemons}
+        onHandleClickNext={this.onHandleClickNext}
+        onHandleClickPrevious={this.onHandleClickPrevious}/>
       </div>
     );
   }

@@ -32,6 +32,8 @@ module.exports = {
       Height:path.resolve(__dirname,'./app/components/Height.js'),
       Type:path.resolve(__dirname,'./app/components/Type.js'),
       Abilities:path.resolve(__dirname,'./app/components/Abilities.js'),
+      Next:path.resolve(__dirname,'./app/components/Next.js'),
+      Previous:path.resolve(__dirname,'./app/components/Previous.js'),
       PokemonAPI:path.resolve(__dirname,'./app/api/PokemonAPI.js'),
       applicationStyles:path.resolve(__dirname,'./app/styles/app.scss')
     },
