@@ -1784,7 +1784,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(83);
+var	fixUrls = __webpack_require__(84);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2144,9 +2144,9 @@ var ReactDOM = __webpack_require__(34);
 var PokemonMain = __webpack_require__(43);
 
 //custom scss
-__webpack_require__(81);
+__webpack_require__(82);
 //load foundation
-__webpack_require__(84);
+__webpack_require__(85);
 $(document).foundation();
 
 ReactDOM.render(React.createElement(PokemonMain, null), document.getElementById('app'));
@@ -19473,7 +19473,7 @@ var PokemonAPI = __webpack_require__(57);
 var axios = __webpack_require__(58);
 var Navbar = __webpack_require__(77);
 var LoadingData = __webpack_require__(78);
-var Filter = __webpack_require__(79);
+var Filter = __webpack_require__(80);
 
 var PokemonMain = createReactClass({
   displayName: 'PokemonMain',
@@ -19584,7 +19584,7 @@ var PokemonMain = createReactClass({
           onHandleClickNext: _this.onHandleClickNext,
           onHandleClickPrevious: _this.onHandleClickPrevious });
       } else {
-        return React.createElement(LoadingData, null);
+        return React.createElement(LoadingData, { time: _this.state.pokemons.length });
       }
     };
 
@@ -21758,16 +21758,20 @@ module.exports = Navbar;
 
 
 var React = __webpack_require__(0);
+var Timer = __webpack_require__(79);
 
-var LoadingData = function LoadingData() {
+var LoadingData = function LoadingData(_ref) {
+  var time = _ref.time;
+
   return React.createElement(
-    "div",
-    { className: "loadingData" },
+    'div',
+    { className: 'loadingData' },
     React.createElement(
-      "p",
+      'p',
       null,
-      "Take a chill pill. The data is being loaded."
-    )
+      'Take a chill pill. The data is being loaded.'
+    ),
+    React.createElement(Timer, { time: time })
   );
 };
 
@@ -21781,7 +21785,35 @@ module.exports = LoadingData;
 
 
 var React = __webpack_require__(0);
-var Options = __webpack_require__(80);
+
+var Timer = function Timer(_ref) {
+  var time = _ref.time;
+
+  var renderTime = function renderTime() {
+    var remainingTime = 20 - time;
+    return remainingTime;
+  };
+  return React.createElement(
+    'div',
+    { className: 'timer' },
+    React.createElement('i', { className: 'fa fa-clock-o' }),
+    '   ',
+    renderTime(),
+    '  sec.'
+  );
+};
+
+module.exports = Timer;
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var React = __webpack_require__(0);
+var Options = __webpack_require__(81);
 
 var Filter = function Filter(_ref) {
   var handleChange = _ref.handleChange;
@@ -21801,7 +21833,7 @@ var Filter = function Filter(_ref) {
 module.exports = Filter;
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21922,13 +21954,13 @@ var Options = function Options(_ref) {
 module.exports = Options;
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(82);
+var content = __webpack_require__(83);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -21953,7 +21985,7 @@ if(false) {
 }
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(22)(undefined);
@@ -21961,13 +21993,13 @@ exports = module.exports = __webpack_require__(22)(undefined);
 
 
 // module
-exports.push([module.i, ".navbar {\n  background-color: #333333;\n  color: #ffffff;\n  font-family: calibri;\n  font-size: 2rem;\n  text-align: center;\n  padding: 5px; }\n\n.pokemon-list {\n  width: 650px;\n  margin: 0 auto;\n  border: 1px solid #595959;\n  margin-top: 1.2rem;\n  margin-bottom: 1.2rem;\n  border-radius: 5px;\n  box-shadow: 0 0 10px #808080;\n  background-color: #e6e6e6; }\n  .pokemon-list .pagination-buttons {\n    padding: 0 0 10px 0; }\n\n.pokemonList-item {\n  width: 600px;\n  border: 1px solid #8c8c8c;\n  margin: 0 auto;\n  border-radius: 5px;\n  margin-top: 1.4rem;\n  margin-bottom: 2.5rem;\n  background-color: #fff; }\n\n.avatar {\n  width: 28%;\n  display: inline-block;\n  margin-bottom: 2rem; }\n  .avatar img {\n    border: 1px solid #b3b3b3;\n    display: block;\n    float: right;\n    width: 120px;\n    height: 120px;\n    border-radius: 5px;\n    margin-top: 2.5rem;\n    margin-bottom: 1rem; }\n\n.stats {\n  width: 65%;\n  display: inline-block;\n  float: right;\n  margin-right: 20px; }\n  .stats .statsData {\n    margin-top: 1rem;\n    font-family: calibri;\n    margin-bottom: 1rem; }\n\n.name {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5rem;\n  color: #595959; }\n\n.height {\n  font-size: 1.2rem;\n  color: #404040;\n  padding: 0 15px;\n  font-family: calibri; }\n\n.weight {\n  font-size: 1.2rem;\n  color: #404040;\n  padding: 0 15px;\n  font-family: calibri; }\n\n.type {\n  font-size: 1.2rem;\n  color: #404040;\n  padding: 0 15px;\n  font-family: calibri; }\n\n.ability {\n  font-size: 1.2rem;\n  color: #404040;\n  padding: 0 15px;\n  font-family: calibri; }\n\n.previous {\n  width: 49%;\n  display: inline-block; }\n  .previous button {\n    background-color: #3366ff;\n    display: block;\n    margin: 0 auto;\n    padding: 15px;\n    font-family: calibri;\n    font-size: 1.2rem;\n    font-weight: bold;\n    color: #fff;\n    border-radius: 5px;\n    cursor: pointer;\n    border-bottom: 3px solid #002699; }\n\n.next {\n  width: 49%;\n  display: inline-block; }\n  .next button {\n    background-color: #00cc66;\n    display: block;\n    margin: 0 auto;\n    padding: 15px 32px;\n    font-family: calibri;\n    font-size: 1.2rem;\n    font-weight: bold;\n    color: #fff;\n    border-radius: 5px;\n    cursor: pointer;\n    border-bottom: 3px solid #006600; }\n\n.loadingData {\n  width: 550px;\n  border: 2px solid #4d4d4d;\n  font-size: 1.5rem;\n  color: #4d4d4d;\n  background-color: #e6e6e6;\n  margin: 0 auto;\n  margin-top: 1rem;\n  text-align: center;\n  padding: 5px 0;\n  border-radius: 5px;\n  font-family: calibri; }\n\n.filter {\n  width: 450px;\n  margin: 0 auto;\n  margin-top: 2rem; }\n  .filter .filter-heading {\n    font-size: 1.5rem;\n    text-align: center;\n    padding: 0 0 10px 0;\n    color: #4d4d4d;\n    font-family: calibri; }\n  .filter select {\n    font-family: calibri; }\n  .filter option {\n    padding: 5px; }\n", ""]);
+exports.push([module.i, ".navbar {\n  background-color: #333333;\n  color: #ffffff;\n  font-family: calibri;\n  font-size: 2rem;\n  text-align: center;\n  padding: 5px; }\n\n.pokemon-list {\n  width: 650px;\n  margin: 0 auto;\n  border: 1px solid #595959;\n  margin-top: 1.2rem;\n  margin-bottom: 1.2rem;\n  border-radius: 5px;\n  box-shadow: 0 0 10px #808080;\n  background-color: #e6e6e6; }\n  .pokemon-list .pagination-buttons {\n    padding: 0 0 10px 0; }\n\n.pokemonList-item {\n  width: 600px;\n  border: 1px solid #8c8c8c;\n  margin: 0 auto;\n  border-radius: 5px;\n  margin-top: 1.4rem;\n  margin-bottom: 2.5rem;\n  background-color: #fff; }\n\n.avatar {\n  width: 28%;\n  display: inline-block;\n  margin-bottom: 2rem; }\n  .avatar img {\n    border: 1px solid #b3b3b3;\n    display: block;\n    float: right;\n    width: 120px;\n    height: 120px;\n    border-radius: 5px;\n    margin-top: 2.5rem;\n    margin-bottom: 1rem; }\n\n.stats {\n  width: 65%;\n  display: inline-block;\n  float: right;\n  margin-right: 20px; }\n  .stats .statsData {\n    margin-top: 1rem;\n    font-family: calibri;\n    margin-bottom: 1rem; }\n\n.name {\n  text-align: center;\n  font-family: Calibri;\n  font-size: 1.5rem;\n  color: #595959; }\n\n.height {\n  font-size: 1.2rem;\n  color: #404040;\n  padding: 0 15px;\n  font-family: calibri; }\n\n.weight {\n  font-size: 1.2rem;\n  color: #404040;\n  padding: 0 15px;\n  font-family: calibri; }\n\n.type {\n  font-size: 1.2rem;\n  color: #404040;\n  padding: 0 15px;\n  font-family: calibri; }\n\n.ability {\n  font-size: 1.2rem;\n  color: #404040;\n  padding: 0 15px;\n  font-family: calibri; }\n\n.previous {\n  width: 49%;\n  display: inline-block; }\n  .previous button {\n    background-color: #3366ff;\n    display: block;\n    margin: 0 auto;\n    padding: 15px;\n    font-family: calibri;\n    font-size: 1.2rem;\n    font-weight: bold;\n    color: #fff;\n    border-radius: 5px;\n    cursor: pointer;\n    border-bottom: 3px solid #002699; }\n\n.next {\n  width: 49%;\n  display: inline-block; }\n  .next button {\n    background-color: #00cc66;\n    display: block;\n    margin: 0 auto;\n    padding: 15px 32px;\n    font-family: calibri;\n    font-size: 1.2rem;\n    font-weight: bold;\n    color: #fff;\n    border-radius: 5px;\n    cursor: pointer;\n    border-bottom: 3px solid #006600; }\n\n.loadingData {\n  width: 550px;\n  border: 2px solid #4d4d4d;\n  font-size: 1.5rem;\n  color: #4d4d4d;\n  background-color: #e6e6e6;\n  margin: 0 auto;\n  margin-top: 1rem;\n  text-align: center;\n  padding: 5px 0;\n  border-radius: 5px;\n  font-family: calibri; }\n  .loadingData .timer i {\n    font-size: 2.5rem;\n    vertical-align: bottom; }\n\n.filter {\n  width: 450px;\n  margin: 0 auto;\n  margin-top: 2rem; }\n  .filter .filter-heading {\n    font-size: 1.5rem;\n    text-align: center;\n    padding: 0 0 10px 0;\n    color: #4d4d4d;\n    font-family: calibri; }\n  .filter select {\n    font-family: calibri; }\n  .filter option {\n    padding: 5px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports) {
 
 
@@ -22062,13 +22094,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(85);
+var content = __webpack_require__(86);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -22093,7 +22125,7 @@ if(false) {
 }
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(22)(undefined);

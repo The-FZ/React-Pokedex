@@ -28,6 +28,7 @@ module.exports = {
       Filter:path.resolve(__dirname,'./app/components/Filter.js'),
       Options:path.resolve(__dirname,'./app/components/Options.js'),
       LoadingData:path.resolve(__dirname,'./app/components/LoadingData.js'),
+      Timer:path.resolve(__dirname,'./app/components/Timer.js'),
       Name:path.resolve(__dirname,'./app/components/Name.js'),
       Avatar:path.resolve(__dirname,'./app/components/Avatar.js'),
       Stats:path.resolve(__dirname,'./app/components/Stats.js'),

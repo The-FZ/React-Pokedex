@@ -119,7 +119,7 @@ var PokemonMain = createReactClass({
         onHandleClickPrevious={this.onHandleClickPrevious}/>;
       }
       else{
-        return <LoadingData/>;
+        return <LoadingData time={this.state.pokemons.length}/>;
       }
     };
 
