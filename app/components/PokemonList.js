@@ -8,18 +8,18 @@ var PokemonList=({pokemonList,onHandleClickNext,onHandleClickPrevious})=>{
 
   return (
     <div className='pokemon-list'>
-    <div>
-    {
-      pokemonList.map(pokemon=>{
-        return <PokemonListItem pokeData ={pokemon} key={pokemon.id}/>
-      })
-    }
-    </div>
+      <div>
+      {
+        pokemonList.map(pokemon=>{
+          return <PokemonListItem pokeData ={pokemon} key={pokemon.id}/>
+        })
+      }
+      </div>
 
-    <div>
-      <Previous onClickPrevious={onHandleClickPrevious}/>
-      <Next onClickNext={onHandleClickNext}/>
-    </div>
+      <div className="pagination-buttons">
+        <Previous onClickPrevious={onHandleClickPrevious}/>
+        <Next onClickNext={onHandleClickNext}/>
+      </div>
     </div>
   );
 };

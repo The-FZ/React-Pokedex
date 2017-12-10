@@ -4,6 +4,7 @@ var PokemonList = require('PokemonList');
 var PokemonAPI = require('PokemonAPI');
 var axios = require('axios');
 var Navbar=require('Navbar');
+var LoadingData = require('LoadingData');
 
 
 var PokemonMain = createReactClass({
@@ -81,12 +82,22 @@ var PokemonMain = createReactClass({
   },
 
   render:function(){
+
+    var renderPokemonList=()=>{
+      if(this.state.pokemons.length===20){
+        return <PokemonList pokemonList={this.state.pokemons}
+        onHandleClickNext={this.onHandleClickNext}
+        onHandleClickPrevious={this.onHandleClickPrevious}/>;
+      }
+      else{
+        return <LoadingData/>;
+      }
+    }
+
     return (
       <div className='pokemon-main'>
         <Navbar/>
-        <PokemonList pokemonList={this.state.pokemons}
-        onHandleClickNext={this.onHandleClickNext}
-        onHandleClickPrevious={this.onHandleClickPrevious}/>
+        {renderPokemonList()}
       </div>
     );
   }

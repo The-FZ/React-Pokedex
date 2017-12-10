@@ -1,0 +1,19 @@
+.next{
+  // border:2px solid blue;
+  width:49%;
+  display: inline-block;
+
+  button{
+    background-color: #00cc66;
+    display: block;
+    margin:0 auto;
+    padding: 15px 32px;
+    font-family: calibri;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border-bottom: 3px solid #006600;
+  }
+}
