@@ -1,1 +1,1 @@
-React Pokedex application
+React Pokedex application.
