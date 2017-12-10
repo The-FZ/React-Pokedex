@@ -21,8 +21,18 @@ module.exports = {
   },
   resolve:{
     alias:{
-      Main:path.resolve(__dirname,'./app/components/Main.js'),
+      PokemonMain:path.resolve(__dirname,'./app/components/PokemonMain.js'),
+      PokemonList:path.resolve(__dirname,'./app/components/PokemonList.js'),
+      PokemonListItem:path.resolve(__dirname,'./app/components/PokemonListItem.js'),
       Navbar:path.resolve(__dirname,'./app/components/Navbar.js'),
+      Name:path.resolve(__dirname,'./app/components/Name.js'),
+      Avatar:path.resolve(__dirname,'./app/components/Avatar.js'),
+      Stats:path.resolve(__dirname,'./app/components/Stats.js'),
+      Weight:path.resolve(__dirname,'./app/components/Weight.js'),
+      Height:path.resolve(__dirname,'./app/components/Height.js'),
+      Type:path.resolve(__dirname,'./app/components/Type.js'),
+      Abilities:path.resolve(__dirname,'./app/components/Abilities.js'),
+      PokemonAPI:path.resolve(__dirname,'./app/api/PokemonAPI.js'),
       applicationStyles:path.resolve(__dirname,'./app/styles/app.scss')
     },
     extensions:[' ', '.js', '.jsx', '.css', '.scss']

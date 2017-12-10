@@ -1,0 +1,18 @@
+.avatar{
+  width:28%;
+  // border:1px solid blue;
+  display:inline-block;
+  margin-bottom: 2rem;
+
+  img{
+    border:1px solid #b3b3b3;
+    display: block;
+    // margin: 0 auto;
+    float: right;
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+}
