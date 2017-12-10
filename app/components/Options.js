@@ -29,8 +29,6 @@ var Options = ({handleChange})=>{
       <option value='https://pokeapi.co/api/v2/type/16/'>Dragon</option>
       <option value='https://pokeapi.co/api/v2/type/17/'>Dark</option>
       <option value='https://pokeapi.co/api/v2/type/18/'>Fairy</option>
-      <option value='https://pokeapi.co/api/v2/type/10002/'>Shadow</option>
-      <option value='https://pokeapi.co/api/v2/type/10001/'>Unknown</option>
     </select>
     </div>
   );

@@ -84,7 +84,6 @@ var PokemonMain = createReactClass({
 
   handleChange:function(url){
     var url = url;
-    console.log(url);
     var that = this;
     axios.get(url).
     then(function(response){
@@ -122,7 +121,7 @@ var PokemonMain = createReactClass({
       else{
         return <LoadingData/>;
       }
-    }
+    };
 
     return (
       <div className='pokemon-main'>
