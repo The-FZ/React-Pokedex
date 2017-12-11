@@ -7,7 +7,7 @@ var LoadingData = ({time})=>{
     <div className="loadingData">
       <p>Take a chill pill.
         The data is being loaded.</p>
-      <p>If the timer does not start, please refresh !!! </p>
+      <p>If data does not loads, please refresh !!! </p>
     <Timer time = {time}/>
     </div>
   )

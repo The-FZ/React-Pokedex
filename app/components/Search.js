@@ -15,7 +15,7 @@ var Search = createReactClass({
 
   render:function(){
     return (
-      <div>
+      <div className='searchbar'>
       <form onSubmit={this.handleSubmit}>
         <input type='text' placeholder='Search your favourite pokemon ...' ref='pokeSearch'/>
       </form>

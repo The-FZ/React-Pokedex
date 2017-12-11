@@ -16,10 +16,12 @@ var PokemonMain = createReactClass({
     next:null,
     pokemonURLs:[],
     pokemons:[],
+    allpokemons:[]
     }
   },
 
   componentDidMount:function(){
+    this.storeAllPokemon(this.state.baseURL);
     this.updatePokemonState(this.state.baseURL);
   },
 
@@ -109,14 +111,42 @@ var PokemonMain = createReactClass({
 
     });
   },
+
   handleOnSubmit:function(name){
-      console.log(name);
+    this.setState({
+      pokemonURLs:[]
+    });
+      var nameInLowerCase = name.toLowerCase();
+      var that = this;
+      this.state.allpokemons.forEach(pokemon=>{
+        if(nameInLowerCase === pokemon.name){
+          axios.get(pokemon.url).
+          then(function(response){
+            that.setState({
+              pokemons:[response.data]
+            });
+          });
+        }
+      });
+  },
+
+  storeAllPokemon:function(url){
+    var that = this;
+    axios.get(url).
+    then(function(response){
+      that.setState(prevState=>{
+        allpokemons:prevState.allpokemons.push(...response.data.results)
+      });
+      if(response.data.next!==null){
+        that.storeAllPokemon(response.data.next);
+      }
+    });
   },
 
   render:function(){
 
     var renderPokemonList=()=>{
-      if(this.state.pokemons.length>=20){
+      if(this.state.pokemons.length>=1){
         return <PokemonList pokemonList={this.state.pokemons}
         onHandleClickNext={this.onHandleClickNext}
         onHandleClickPrevious={this.onHandleClickPrevious}/>;

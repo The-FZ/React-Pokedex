@@ -6,13 +6,17 @@ var Previous = require('Previous');
 
 var PokemonList=({pokemonList,onHandleClickNext,onHandleClickPrevious})=>{
 
+  // var renderPagination=()=>{
+  //   if(pokemonList.length>)
+  // };
+
   return (
     <div className='pokemon-list'>
       <div>
       {
         pokemonList.map(pokemon=>{
-          return <PokemonListItem pokeData ={pokemon} key={pokemon.id}/>
-        })
+              return <PokemonListItem pokeData ={pokemon} key={pokemon.id}/>
+           })
       }
       </div>
 
