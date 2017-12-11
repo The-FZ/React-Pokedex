@@ -26,6 +26,7 @@ module.exports = {
       PokemonListItem:path.resolve(__dirname,'./app/components/PokemonListItem.js'),
       Navbar:path.resolve(__dirname,'./app/components/Navbar.js'),
       Filter:path.resolve(__dirname,'./app/components/Filter.js'),
+      Search:path.resolve(__dirname,'./app/components/Search.js'),
       Options:path.resolve(__dirname,'./app/components/Options.js'),
       LoadingData:path.resolve(__dirname,'./app/components/LoadingData.js'),
       Timer:path.resolve(__dirname,'./app/components/Timer.js'),

@@ -1784,7 +1784,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(84);
+var	fixUrls = __webpack_require__(85);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2144,9 +2144,9 @@ var ReactDOM = __webpack_require__(34);
 var PokemonMain = __webpack_require__(43);
 
 //custom scss
-__webpack_require__(82);
+__webpack_require__(83);
 //load foundation
-__webpack_require__(85);
+__webpack_require__(86);
 $(document).foundation();
 
 ReactDOM.render(React.createElement(PokemonMain, null), document.getElementById('app'));
@@ -19574,6 +19574,9 @@ var PokemonMain = createReactClass({
       });
     });
   },
+  handleOnSubmit: function handleOnSubmit(name) {
+    console.log(name);
+  },
 
   render: function render() {
     var _this = this;
@@ -19592,7 +19595,7 @@ var PokemonMain = createReactClass({
       'div',
       { className: 'pokemon-main' },
       React.createElement(Navbar, null),
-      React.createElement(Filter, { handleChange: this.handleChange }),
+      React.createElement(Filter, { handleChange: this.handleChange, handleOnSubmit: this.handleOnSubmit }),
       renderPokemonList()
     );
   }
@@ -21819,9 +21822,11 @@ module.exports = Timer;
 
 var React = __webpack_require__(0);
 var Options = __webpack_require__(81);
+var Search = __webpack_require__(82);
 
 var Filter = function Filter(_ref) {
-  var handleChange = _ref.handleChange;
+  var handleChange = _ref.handleChange,
+      handleOnSubmit = _ref.handleOnSubmit;
 
   return React.createElement(
     'div',
@@ -21831,7 +21836,8 @@ var Filter = function Filter(_ref) {
       { className: 'filter-heading' },
       'Filter the pokemon by their types'
     ),
-    React.createElement(Options, { handleChange: handleChange })
+    React.createElement(Options, { handleChange: handleChange }),
+    React.createElement(Search, { handleOnSubmit: handleOnSubmit })
   );
 };
 
@@ -21962,10 +21968,49 @@ module.exports = Options;
 /* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+var React = __webpack_require__(0);
+var createReactClass = __webpack_require__(44);
+
+var Search = createReactClass({
+  displayName: 'Search',
+
+
+  handleSubmit: function handleSubmit(event) {
+    event.preventDefault();
+    var pokemon = this.refs.pokeSearch.value;
+    if (pokemon.length > 0) {
+      this.refs.pokeSearch.value = '';
+      this.props.handleOnSubmit(pokemon);
+    }
+  },
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'form',
+        { onSubmit: this.handleSubmit },
+        React.createElement('input', { type: 'text', placeholder: 'Search your favourite pokemon ...', ref: 'pokeSearch' })
+      )
+    );
+  }
+
+});
+
+module.exports = Search;
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(83);
+var content = __webpack_require__(84);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -21990,7 +22035,7 @@ if(false) {
 }
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(22)(undefined);
@@ -22004,7 +22049,7 @@ exports.push([module.i, ".navbar {\n  background-color: #333333;\n  color: #ffff
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports) {
 
 
@@ -22099,13 +22144,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(86);
+var content = __webpack_require__(87);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -22130,7 +22175,7 @@ if(false) {
 }
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(22)(undefined);

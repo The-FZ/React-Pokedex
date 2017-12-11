@@ -109,6 +109,9 @@ var PokemonMain = createReactClass({
 
     });
   },
+  handleOnSubmit:function(name){
+      console.log(name);
+  },
 
   render:function(){
 
@@ -126,7 +129,7 @@ var PokemonMain = createReactClass({
     return (
       <div className='pokemon-main'>
         <Navbar/>
-        <Filter handleChange={this.handleChange}/>
+        <Filter handleChange={this.handleChange} handleOnSubmit={this.handleOnSubmit}/>
         {renderPokemonList()}
       </div>
     );
