@@ -14,7 +14,6 @@ var PokemonMain = createReactClass({
     baseURL:"https://pokeapi.co/api/v2/pokemon/?limit=20",
     previous:null,
     next:null,
-    pokemonURLs:[],
     pokemons:[],
     allpokemons:[]
     }
@@ -28,7 +27,6 @@ var PokemonMain = createReactClass({
   onHandleClickNext:function(){
     this.setState({
       pokemons:[],
-      pokemonURLs:[],
     });
 
     if(this.state.next!==null){
@@ -42,7 +40,6 @@ var PokemonMain = createReactClass({
   onHandleClickPrevious:function(){
     this.setState({
       pokemons:[],
-      pokemonURLs:[],
     });
 
     if(this.state.previous!==null){
@@ -78,7 +75,6 @@ var PokemonMain = createReactClass({
       that.setState({
         next:next,
         previous:previous,
-        pokemonURLs:pokemonAllurls,
       });
 
     });
@@ -96,7 +92,6 @@ var PokemonMain = createReactClass({
       });
 
       that.setState({
-        pokemonURLs:[],
         pokemons:[],
       });
 
@@ -113,9 +108,6 @@ var PokemonMain = createReactClass({
   },
 
   handleOnSubmit:function(name){
-    this.setState({
-      pokemonURLs:[]
-    });
       var nameInLowerCase = name.toLowerCase();
       var that = this;
       this.state.allpokemons.forEach(pokemon=>{
